@@ -3,6 +3,7 @@
 تهیه شده برای درس آمار و احتمال مهندسی - دانشگاه تهران
 ```{image} images/misc/University_of_Tehran_logo.png
 :height: 150px
+:align: center
 ```
 مدرس: دکتر محمدرضا ابوالقاسمی
 
