@@ -1,4 +1,5 @@
 format: jb-book
 root: intro
 chapters:
-- file: Basics
+- file: basics
+- file: about_us
