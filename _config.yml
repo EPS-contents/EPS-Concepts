@@ -1,2 +1,10 @@
 title: مفاهیم آمار و احتمال
 author: گروه دستیاران آموزشی
+
+html:
+  favicon: "logo.png"
+  use_repository_button: true
+  use_issues_button: true
+
+repository:
+  url: https://github.com/EPS-contents/EPS-Concepts/
