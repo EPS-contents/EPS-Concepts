@@ -29,6 +29,7 @@
 ```{figure} images/0/sample_space.gif
 ---
 :width: 500px
+name: directive-fig
 ---
 فضای نمونه ای و پیشامد
 ```
@@ -40,6 +41,7 @@
 ```{figure} images/0/sample_space_reduction.png
 ---
 :width: 500px
+name: directive-fig
 ---
 کاهش اندازه فضای نمونه ای در فضای شرطی شده
 ```
