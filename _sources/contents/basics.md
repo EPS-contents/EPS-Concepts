@@ -28,7 +28,7 @@
 ```
 ```{figure} images/0/sample_space.gif
 ---
-:width: 500px
+height: 200px
 name: directive-fig
 ---
 فضای نمونه ای و پیشامد
@@ -40,7 +40,7 @@ name: directive-fig
 - برای وقوع پیشامد A به شرط وقوع پیشامد B، نتیجه آزمایش تصادفی باید از نمونه هایی باشد که هم در A و هم در B حضور دارد، یعنی در  $A \cap B$ باشد.
 ```{figure} images/0/sample_space_reduction.png
 ---
-:width: 500px
+height: 200px
 name: directive-fig
 ---
 کاهش اندازه فضای نمونه ای در فضای شرطی شده
