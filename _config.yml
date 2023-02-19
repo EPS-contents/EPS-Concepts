@@ -5,7 +5,7 @@ logo: "logo.png"
 html:
   favicon: "logo.png"
   use_repository_button: true
-  use_issues_button: true
+  use_issues_button: false
 
 repository:
   url: https://github.com/EPS-contents/EPS-Concepts/
