@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="about_us.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="intro.html" />
+    <link rel="next" title="درباره ما" href="about_us.html" />
+    <link rel="prev" title="مفاهیم آمار و احتمال" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,7 +113,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    <no title>
+                    مفاهیم آمار و احتمال
                 </a>
             </li>
         </ul>
@@ -121,6 +121,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    مقدمات احتمال
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about_us.html">
+   درباره ما
   </a>
  </li>
 </ul>
@@ -187,19 +192,10 @@ title="Fullscreen mode"
   </span>
 
 </button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/EPS-contents/EPS-Concepts/"
+<a href="https://github.com/EPS-contents/EPS-Concepts/"
    class="headerbtn"
    data-toggle="tooltip"
-data-placement="left"
+data-placement="bottom"
 title="Source repository"
 >
   
@@ -207,31 +203,8 @@ title="Source repository"
 <span class="headerbtn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="headerbtn__text-container">repository</span>
+
 </a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/EPS-contents/EPS-Concepts//issues/new?title=Issue%20on%20page%20%2Fcontents/basics.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
 
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
@@ -430,6 +403,10 @@ title="Print to PDF"
 <h2>استقلال پیشامد ها<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <p>فرض کنید می خواهیم احتمال وقوع پیشامد A را محاسبه کنیم. بعضی وقت ها اطلاعات اضافه ای در مورد دنیای مسئله داریم(مثلا می دانیم پیشامد B رخ داده است)، ولی داشتن این اطلاعات اضافی، تغییری در احتمال وقوع پیشامد A ایجاد نمی کند. به عبارت ریاضی یعنی <span class="math notranslate nohighlight">\(P(A|B)=P(A)\)</span> در این حالت می گوییم پیشامد A و B از هم مستقل هستند.</p>
 <p>اگر تعبیر کاهش اندازه فضای نمونه ای که در احتمال شرطی راجع به آن صحبت کردیم را در نظر بگیریم، میتوان گفت که وقوع B، فضای نمونه ای را به گونه ای متقارن محدود کرده که نسبت تعداد نمونه هایی از A که همچنان قابلیت رخ دادن دارند به تعداد اعضای فضای نمونه ای کاهش یافته(<span class="math notranslate nohighlight">\(P(A|B)\)</span>)، برابر با نسبت تعداد اعضای A به تعداد اعضای فضای نمونه ای اولیه(<span class="math notranslate nohighlight">\(P(A)\)</span>) است.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">نکته</p>
+<p>دقت کنید که تعریف شهودی استقلال، بی ربط بودن دو موضوع نسبت به هم است. مثلا به صورت نرمال، این که امشب شام قرمه سبزی داشته باشید ربطی به اینکه فردا در شهر برف سنگین بیاید نخواهد داشت. اما وقتی مسائل پیچیده تر می شوند، تشخیص این بی ارتباط بودن به صورت ذهنی می تواند سخت و گاها غیر ممکن شود. فلذا در عمل برای بررسی استقلال، از فرمول ریاضی <span class="math notranslate nohighlight">\(P(A|B) \stackrel{?}{=} P(A)P(B)\)</span> استفاده می کنیم که بازنویسی شده همان <span class="math notranslate nohighlight">\(P(A|B)=P(A)\)</span> است.</p>
+</div>
 <p>اگر بخواهیم مفهوم استقلال را به بیش از دو پیشامد تعمیم دهیم، باید دقت کنیم که استقلال دو به دوی پیشامد ها، به معنای استقلال همه پیشامد ها با هم <strong>نیست!</strong> شاید شهود این مسئله کمی سخت باشد ولی می توان مثال های عددی ای زد که در آن ها پیشامد ها دو به دو با هم مستقل باشند(مثلا پیشامد های A و B و C، ولی اگر اطلاع داشته باشیم که پیشامد B و C با هم رخ داده اند(یعنی <span class="math notranslate nohighlight">\(B \cap C\)</span>)، احتمال وقوع پیشامد A با حالتی که این اطلاعات را نداشته باشیم فرق می کند! برای دیدن یک مثال واقعی از چنین شرایطی، به مثال DNA Testing در
 <a class="reference external" href="https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Mathematics_for_Computer_Science_(Lehman_Leighton_and_Meyer)/04%3A_Probability/17%3A_Conditional_Probability/17.08%3A_Mutual_Independence">اینجا</a> نگاهی بیندازید.</p>
 <div class="admonition warning">
@@ -471,13 +448,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">&lt;no title&gt;</p>
+            <p class="prev-next-title">مفاهیم آمار و احتمال</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="about_us.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">درباره ما</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
