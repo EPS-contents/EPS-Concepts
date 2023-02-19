@@ -1,2 +1,2 @@
 # EPS-Concepts
-Concepts of EPS course - University of Tehran
+Concepts of Engineering Probability & Statistics course - University of Tehran
