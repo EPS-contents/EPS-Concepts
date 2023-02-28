@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>معرفی &#8212; مفاهیم آمار و احتمال</title>
+    <title>مفهوم متغیر های تصادفی &#8212; مفاهیم آمار و احتمال</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="مقدمات احتمال" href="basics.html" />
+    <link rel="next" title="درباره ما" href="about_us.html" />
+    <link rel="prev" title="مقدمات احتمال" href="basics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -108,8 +111,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     معرفی
                 </a>
             </li>
@@ -126,9 +129,9 @@ const thebe_selector_output = ".output, .cell_output"
   متغیر های تصادفی
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="random_var_basics.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    مفهوم متغیر های تصادفی
   </a>
  </li>
@@ -225,7 +228,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/contents/intro.md"
+        <a href="../_sources/contents/random_var_basics.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -262,23 +265,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   تعریف
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>معرفی</h1>
+                <h1>مفهوم متغیر های تصادفی</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   تعریف
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -287,20 +327,35 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>معرفی<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<p>در اینجا می توانید مفاهیمی که سر کلاس آموخته اید را مرور کنید. تلاشمان را کرده ایم تا با بیان ساده و تا حد امکان به دور از جزییات ریاضی،  نکات کلیدی را طوری بیان کنیم که به عمیق تر شدن شما در این درس شیرین کمک کنیم.</p>
-<div class="admonition- admonition">
-<p class="admonition-title">نکته</p>
-<p>نگارش این وبسایت، یک پروژه در حال توسعه است، بنابراین علی رغم تلاش های ما، ممکن است در آن با اشتباهاتی مواجه شوید یا حتی ایده ای برای بهبود آن داشته باشید. در اینصورت لطفا با ما در ارتباط باشید:</p>
-<p><a class="reference external" href="https://github.com/EPS-contents/EPS-Concepts/issues">اطلاع رسانی مشکلات</a></p>
-<p><a class="reference external" href="https://github.com/EPS-contents/EPS-Concepts/discussions">پیشنهادات و ایده ها</a></p>
+<h1>مفهوم متغیر های تصادفی<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<section id="id2">
+<h2>تعریف<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>در گذشته با مفهوم <em>فضای نمونه ای</em> آشنا شده اید. در بسیاری از موارد، هر یک از نمونه ها نظیر به یک کمیت عددی هستند.</p>
+<div class="tip admonition">
+<p class="admonition-title">Title</p>
+<p>به طور مثال یک آزمایش را در نظر بگیرید که در آن احتمال 6 آمدن یک تاس برای اولین بار طی پرتاب های متوالی بررسی می شود. اینکه در پرتاپ اول این اتفاق رخ دهد، احتمال <span class="math notranslate nohighlight">\(\frac{1}{6}\)</span>، پرتاب دوم <span class="math notranslate nohighlight">\(\frac{5}{6} \times \frac{1}{6} = \frac{5}{36}\)</span> و … بنابراین هر نمونه(6 آمدن برای اولین بار در پرتاب n ام) یک عدد نظیر خود دارد(n).</p>
 </div>
-<div class="toctree-wrapper compound">
+<p>حال فرض کنید که برای راحتی در بیان احتمالات، برای نتیجه آزمایش تصادفی خود یک اسم در نظر گرفته باشیم، مثلا <span class="math notranslate nohighlight">\(X\)</span>. در اینصورت برای بیان احتمال وقوع هر یک از نمونه ها، می توان از نوشتاری به صورت <span class="math notranslate nohighlight">\((P(X=i\)</span> استفاده کرد که به معنای احتمال مشاهده مقدار i در آزمایش تصادفی است. در اینصورت، X را یک متغیر تصادفی می نامیم. یعنی در صورتی که به هر یک از اعضای فضای نمونه ای یک عدد حقیقی نسبت دهیم، از روی آن فضای نمونه ای یک متغیر تصادفی ساخته ایم.</p>
+<p>به زبان دیگر می توان گفت که یک متغیر تصادفی، نگاشتی از فضای نمونه ای به محور اعداد حقیقی است. اینکه انجام این عمل چه فایده ای دارد را به مرور زمان در این فصل فرا خواهید گرفت. ولی به طور خلاصه می توان گفت که خروجی بسیاری از آزمایشات تصادفی کمیت های عددی هستند و ساخت متغیر تصادفی نظیر به آن ها، برای ما بررسی عددی شان را راحت تر می کند. پس متغیر تصادفی، یک چهارچوب ریاضیاتی است که بر مبنای مفهوم فضای نمونه ای بنا شده و ابزار هایی در اختیار ما قرار می دهد که بتوانیم با آن ها محتوای کمی نمونه ها را مورد بررسی قرار دهیم.</p>
+<div class="warning admonition">
+<p class="admonition-title">Title</p>
+<p>توجه داشته باشید که این نگاشت الزاما یک به یک نیست، یعنی چند نمونه ممکن است به یک عدد یکسان از محور اعداد حقیقی نگاشت شوند. این که این نگاشت یک به یک باشد یا نباشد، به ماهیت اعضای فضای نمونه ای و شیوه طرح مسئله توسط شما بستگی دارد.</p>
 </div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="contents/images/random_var_mapping.jpg"><img alt="contents/images/random_var_mapping.jpg" src="contents/images/random_var_mapping.jpg" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">متغیر تصادفی، یک نگاشت از فضای نمونه ای به محور اعداد حقیقی</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>در مواردی که تعداد اعضای فضای نمونه ایی که از روی آن متغیر تصادفی را می سازیم محدود باشد، طبعا به تعداد محدودی عدد نیز برای توصیف این فضا نیاز خواهیم داشت. چنین متغیر های تصادفی ای <em>گسسته</em> نامیده می شود، چون بین مقادیری که نتیجه آزمایش تصادفی می تواند روی محور اعداد اختیار کند، گسستگی وجود دارد.</p>
+<p>به همین صورت اگر فضای نمونه ای ما بی شمار عضو داشته باشد(مثلا زمان رسیدن اتوبوس به ایستگاه)، ناحیه پیوسته ای از محور اعداد برای توصیف این فضا به کار می گیریم و متغیر تصادفی حاصل شده را <em>پیوسته</em> می نامیم.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="contents/images/discrete_continuous.png"><img alt="contents/images/discrete_continuous.png" src="contents/images/discrete_continuous.png" style="height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">متغیر تصادفی گسسته یا پیوسته</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -330,10 +385,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="basics.html" title="next page">
+    <a class='left-prev' id="prev-link" href="basics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">مقدمات احتمال</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="about_us.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">مقدمات احتمال</p>
+        <p class="prev-next-title">درباره ما</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
