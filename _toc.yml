@@ -1,5 +1,9 @@
 format: jb-book
 root: contents/intro
-chapters:
-- file: contents/basics
-- file: contents/about_us
+parts:
+  - caption:
+    chapters:
+    - file: contents/basics
+  - caption: 
+    chapters:
+    - file: contents/about_us
