@@ -4,7 +4,7 @@ parts:
   - caption:
     chapters:
     - file: contents/basics
-   - caption: متغیر های تصادفی
+  - caption: متغیر های تصادفی
     chapters:
     - file: contents/random_var_basics
   - caption: 
