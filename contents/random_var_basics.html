@@ -493,7 +493,7 @@ title="Print to PDF"
 <p class="admonition-title">مثال</p>
 <p>به طور مثال یک آزمایش را در نظر بگیرید که در آن احتمال 6 آمدن یک تاس برای اولین بار طی پرتاب های متوالی بررسی می شود. اینکه در پرتاپ اول این اتفاق رخ دهد، احتمال <span class="math notranslate nohighlight">\(\frac{1}{6}\)</span>، پرتاب دوم <span class="math notranslate nohighlight">\(\frac{1}{6} \times \frac{5}{6}=\frac{5}{36}\)</span> و … بنابراین هر نمونه(6 آمدن برای اولین بار در پرتاب n ام) یک عدد نظیر خود دارد(n).</p>
 </div>
-<p>حال فرض کنید که برای راحتی در بیان احتمالات، برای نتیجه آزمایش تصادفی خود یک اسم در نظر گرفته باشیم، مثلا <span class="math notranslate nohighlight">\(X\)</span>. در اینصورت برای بیان احتمال وقوع هر یک از نمونه ها، می توان از نوشتاری به صورت <span class="math notranslate nohighlight">\((P(X=i\)</span> استفاده کرد که به معنای احتمال مشاهده مقدار i در آزمایش تصادفی است. در اینصورت، X را یک متغیر تصادفی می نامیم. یعنی در صورتی که به هر یک از اعضای فضای نمونه ای یک عدد حقیقی نسبت دهیم، از روی آن فضای نمونه ای یک متغیر تصادفی ساخته ایم.</p>
+<p>حال فرض کنید که برای راحتی در بیان احتمالات، برای نتیجه آزمایش تصادفی خود یک اسم در نظر گرفته باشیم، مثلا <span class="math notranslate nohighlight">\(X\)</span>. در اینصورت برای بیان احتمال وقوع هر یک از نمونه ها، می توان از نوشتاری به صورت <span class="math notranslate nohighlight">\(P(X=i)\)</span> استفاده کرد که به معنای احتمال مشاهده مقدار i در آزمایش تصادفی است. در اینصورت، X را یک متغیر تصادفی می نامیم. یعنی در صورتی که به هر یک از اعضای فضای نمونه ای یک عدد حقیقی نسبت دهیم، از روی آن فضای نمونه ای یک متغیر تصادفی ساخته ایم.</p>
 <p>به زبان دیگر می توان گفت که یک متغیر تصادفی، نگاشتی از فضای نمونه ای به محور اعداد حقیقی است. اینکه انجام این عمل چه فایده ای دارد را به مرور زمان در این فصل فرا خواهید گرفت. ولی به طور خلاصه می توان گفت که خروجی بسیاری از آزمایشات تصادفی کمیت های عددی هستند و ساخت متغیر تصادفی نظیر به آن ها، برای ما بررسی عددی شان را راحت تر می کند. پس متغیر تصادفی، یک چهارچوب ریاضیاتی است که بر مبنای مفهوم فضای نمونه ای بنا شده و ابزار هایی در اختیار ما قرار می دهد که بتوانیم با آن ها محتوای کمی نمونه ها را مورد بررسی قرار دهیم.</p>
 <div class="warning admonition">
 <p class="admonition-title">احتیاط!</p>
@@ -538,7 +538,7 @@ title="Print to PDF"
 <p>دیدیم که احتمال رخ دادن هر یک از مقادیر متغیر گسسته، به تنهایی برابر صفر است، ولی احتمال اختیار یک مقدار در میان مجموعه ای از مقادیر، صفر نیست. تابع چگالی احتمال، نشان دهنده این مفهوم است و نشان دهنده احتمال رخ دادن یکی از مقادیر در همسایگی هم تقسیم بر طول همسایگی است. دلیل نام گذاری آن به صورت <em>چگالی</em> نیز همین تقسیم شدن بر طول همسایگی می باشد.
 $<span class="math notranslate nohighlight">\(f_X(x) = \frac{P(x&lt;X&lt;x+ \epsilon )}{\epsilon}\)</span>$</p>
 <figure class="align-default" id="id7">
-<a class="reference internal image-reference" href="../_images/pdf.svg"><img alt="../_images/pdf.svg" height="300px" src="../_images/pdf.svg" /></a>
+<a class="reference internal image-reference" href="../_images/pdf.png"><img alt="../_images/pdf.png" src="../_images/pdf.png" style="height: 300px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">تابع چگالی احتمال</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -547,13 +547,15 @@ $<span class="math notranslate nohighlight">\(f_X(x) = \frac{P(x&lt;X&lt;x+ \eps
 <p class="admonition-title">نکته</p>
 <p>بنا به شیوه ای که تابع چگالی احتمال را تعریف کردیم، می توان به کمک تابع ضربه، توزیع متغیر های تصادفی گسسته را در قالب تابع چگالی نیز نمایش داد. به عبارتی چگالی احتمال هر یک از مقادیر ممکن در این متغیر ها، برابر بی نهایت است چون در یک بازه به طول صفر احتمال رخ دادنشان وجود دارد.</p>
 <figure class="align-default" id="id8">
-<a class="reference internal image-reference" href="../_images/pdf_discrete.webp"><img alt="../_images/pdf_discrete.webp" src="../_images/pdf_discrete.webp" style="height: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/pdf_discrete.png"><img alt="../_images/pdf_discrete.png" src="../_images/pdf_discrete.png" style="height: 300px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">تابع چگالی احتمال برای متغیر تصادفی گسسته</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{admonition} احتیاط!
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+
+```{admonition} احتیاط!
 :class: warning
 از آنجا که مقدار تابع PDF در یک نقطه برابر با احتمال رخ دادن آن مقدار نیست(چون دیدیم که احتمال رخ دادن هر یک از مقدار ها به تنهایی عملا صفر است)، این تابع می تواند مقادیر بیشتر از 1 نیز داشته باشد. در عمل با توجه به تعریف تابع PDF، شرط 1 شدن مجموع احتمال نمونه ها در متغیر های گسسته، از 1 شدن انتگرال این تابع بر روی تمامی مقادیر حقیقی حاصل می شود و به احتمال تک تک مقادیر آن وابستگی مستقیم ندارد. 
 </pre></div>
