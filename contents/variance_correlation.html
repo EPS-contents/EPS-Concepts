@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>واریانس و همبستگی &#8212; مفاهیم آمار و احتمال</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/rtl_typing.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/variance_correlation';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="توزیع مشترک" href="joint_distribution.html" />
+    <link rel="prev" title="امید ریاضی" href="expectation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    معرفی
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">مقدمات احتمال</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">متغیر های تصادفی</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="random_var_basics.html">مفهوم متغیر های تصادفی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expectation.html">امید ریاضی</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">واریانس و همبستگی</a></li>
+<li class="toctree-l1"><a class="reference internal" href="joint_distribution.html">توزیع مشترک</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moments.html">گشتاور یک متغیر تصادفی</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="about_us.html">درباره ما</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/EPS-contents/EPS-Concepts" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/contents/variance_correlation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>واریانس و همبستگی</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">واریانس</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">خواص</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">انحراف معیار</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">کواریانس</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">خواص</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">همبستگی</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">منابع</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>واریانس و همبستگی<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="id2">
+<h2>واریانس<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>بگذارید ابتدا مثالی برای شروع طرح کنیم نمودار های زیر که اعداد نوشته شده به رنگ قرمز احتمال رخ دادن آن مقدار است را ببینید.
+تصویر 1
+در تمام نمودار ها امید ریاضی برابر 0 می باشد. چه چیزی در این PMF ها متفاوت است؟
+به نوعی فاصله متغیر تصادفی ها از امید ریاضی آنها متفاوت است یا به نوعی هر کدام به ما می گویند که چقدر می توانند از امید ریاضی شان دور شوند.
+در شکل بالا همانطور که مشاهده میشود نمودار A دارای واریانس صفر است یا به نوعی تمام وزنش در میانگینش قرار گرفته و نمودار C دارای بیشترین واریانس بین این سه نمودار است و B هم واریانسی بین این دو مقدار دارد.</p>
+<div class="warning admonition">
+<p class="admonition-title">احتیاط!</p>
+<p>نمودار C بیشترین واریانس بین تمام تموزیع های ممکن با امید ریاضی صفر را ندارد! بلکه بیشترین بی نظمی(آنتروپی) را دارد.<br />
+(مفهوم آنتروپی در این درس مورد بررسی نبوده!)<br />
+مثلا توزیع زیر واریانسی بیشتر از نمودار C دارد.<br />
+تصویر 2</p>
+</div>
+<p>حال رابطه ریاضی واریانس را بررسی کنیم.
+$<span class="math notranslate nohighlight">\(Var(X) =E[(X-E(X))^{2}]\)</span><span class="math notranslate nohighlight">\(
+بنظر شما چرا کل این عبارت توان دو دارد؟
+بله همانطور که متوجه شدید واریانس به نوعی مفهوم فاصله از یک نقطه(میانگین) است پس اگر به توان دو نمی رسید میتوان حدس زد مقدار عبارت مورد نظر 0 می شد زیرا \)</span><span class="math notranslate nohighlight">\(E(X)\)</span>$ یک عدد ثابت است و از پرانتز بیرون می آمد و آنگاه امید ریاضی با منفی خودش جمع می شد و نتیجه نهایی صفر می شد.</p>
+<div class="note admonition">
+<p class="admonition-title">نکته!</p>
+<p>1)$<span class="math notranslate nohighlight">\(Var(X)= \frac{1}{n}  \sum_{i=1}^n (x_{i}-\mu )^2\)</span><span class="math notranslate nohighlight">\(  
+2)\)</span><span class="math notranslate nohighlight">\(S^2= \frac{1}{n-1}  \sum_{i=1}^n X_{i}-\overline{X})^2\)</span>$</p>
+<p>شاید شما این دو عبارت را دیده باشید.<br />
+آیا فرمولی اشتباه است؟<br />
+خیر، هر کدام از این فرمول ها برای شرایطی کاربرد دارند.<br />
+فرمول 1 برای زمانیست که واریانس جمعیت را محاسبه میکنیم. که $<span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\( میانگین جمعیت بوده و \)</span><span class="math notranslate nohighlight">\(n\)</span><span class="math notranslate nohighlight">\( تعداد اعضای جمعیت می باشد.  یعنی شما اطلاعات کل فضای آزمایش را در اختیار دارید.   
+فرمول 2 برای زمانیست که با نمونه ایی از جمعیت بزرگ سروکار داریم واریانس نمونه را محاسبه میکنیم. که \)</span><span class="math notranslate nohighlight">\(\overline{X}\)</span><span class="math notranslate nohighlight">\( میانگین نمونه بوده و \)</span><span class="math notranslate nohighlight">\(n\)</span><span class="math notranslate nohighlight">\( تعداد نمونه می باشد. یعنی شما اطلاعات کل فضای آزمایش را در اختیار ندارید.  
+علت ظاهر شدن \)</span><span class="math notranslate nohighlight">\(n-1 \)</span>$ بدلیل تصحیح بسل است و برای تصحیح سوگیری معرفی شده با تخمین واریانس جامعه از یک نمونه به جای کل جامعه استفاده می شود.</p>
+</div>
+<section id="id3">
+<h3>خواص<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[Var(aX+b) = a^{2}Var(X) \]</div>
+</li>
+</ul>
+<p>اولین سوالی که مطرح میشود این موضوع است که چرا همچون امید ریاضی دیگر b ظاهر نشده است.
+دلیل این موضوع این است که تمام متغییر های به یک اندازه و به یک جهت حرکت میکنند. پس میانگین هم به همان اندازه تغییر میکند و در نهایت انگار تغییری رخ نداده و حال چرا ضریب a به صورت توان دو ظاهر شده است بهترین توضیح این است که بگوییم تمام مقادیر a برابر شده اند و همانند b، کل مجموعه به یک سمت حرکت نکرده بلکه مجموعه بنا به اندازه a منبسط یا منقبض شده است پس بنظر میرسد باید اثری از a در واریانس نیز دیده شود.</p>
+</section>
+<section id="id4">
+<h3>انحراف معیار<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>که با $<span class="math notranslate nohighlight">\(\sigma \)</span>$ نمایش داده می شود جذر واریانس می باشد.</p>
+</section>
+</section>
+<section id="id5">
+<h2>کواریانس<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>کواریانس مفهومی است که به ما قدرت این را میدهد که ثابت کنیم دو متغییر بر یکدیگر تاثیری دارند یا خیر رخ دادن و انجام یکی از آنها تاثیری بر دیگری ندارد.
+مثلا می خواهیم بدانیم آیا تک فرزندی ربطی به ارتکاب جرم در بزرگسالی دارد یا خیر.<br />
+ما همیشه دنبال کمّی کردن وقایع هستیم. برای درک وابستگی چند چیز به یکدیگر باید مفهومی ریاضی را تعریف و استفاده کنیم.
+تصویر 3
+در شکل بالا فرض کنید نمودار توزیع توام دو متغیر رسم شده است و فرض کنید امید ریاضی این دو متغییر نقاطی هستند که در شکل مشخص شده اند.
+حال تعریف واریانس را بخاطر بیاورید می خواهیم از آن استفاده کنیم. میگویم اگر نقطه ایی از میانگین X  دور شد و همزمان و در همان جهت از میانگین Y دور شد یک تاثیر مثبتی بگذار و اگر خلاف این رخ داد تاثیر منفی بگذار. به نوعی میگوییم اگر X رشد کرد و Y هم رشد کرد این دو با علامت مثبت ظاهر بشوند و به نوعی دریافت شود که وابستگی دارند و با رشد یکی از آنها در میابیم دیگری نیز رشد کرده است(مثلا افزایش خودرو شخصی شهروندان تهرانی و ترافیک شهر تهران) اگر خلاف این رخ داد یعنی یکی افزایش پیدا کرد و دیگری کاهش یافته و دریافت شود که وابستگی دارند و با رشد یکی، دیگری کاهش میابد(مثلا افزایش فعالیت بدنی و اضافه وزن).
+تصویر 4
+پس طبق مطلبی که گفته شد می توان نوشت
+$<span class="math notranslate nohighlight">\(Cov(X,Y)=E[(X-E(X))(Y-E(Y))]\)</span><span class="math notranslate nohighlight">\(
+سوالی که مطرح می شود این است که چه زمان کواریانس صفر می شود؟  
+تصویر 5
+در شکل بالا مشاهده میکنیم نقطه ایی وجود دارد که با رشد متغییر X  و فاصله گرفتن از میانگینش دو برای متغییر Y دو حالت رخ میدهد، یک نقطه(قسمت شمال شرقی) از این تغییر پیروی میکند و افزایش میابد و نقطه دیگر(قسمت جنوب شرقی)خلاف تغییر X عمل می کند و کاهش میابد. پس به نوعی این دو نقطه اثر یکدیگر را خنثی می کنند. و از تعمیم دادن این بررسی به سایر نقاط در میابیم این دو متغییر وابستگی ندارند.
+حال ببینیم اگر دو متغییر X و Y مستقل باشند کواریانس آنها چه می شود
+\)</span><span class="math notranslate nohighlight">\(Cov(X,Y)=E[(X-E(X))(Y-E(Y))]= \sum_{y} \sum_{x}(x-E(X))(y-E(Y)) f_{XY}(xy) \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(=\sum_{y} \sum_{x}(x-E(X))(y-E(Y)) f_{Y}(y)f_{X}(x)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(=\sum_{y}(y-E(Y)) f_{Y}(y) \sum_{x}(x-E(X))f_{X}(x)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(=\sum_{y}(y-E(Y)) f_{Y}(y) (\sum_{x}xf_{X}(x)-\sum_{x}E(X)f_{X}(x))\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(=\sum_{y}(y-E(Y)) f_{Y}(y) (E(X)-E(X))\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(=0\)</span>$
+پس در میابیم کواریانس دو متغیر مستقل از هم از صفر است.</p>
+<div class="note admonition">
+<p class="admonition-title">نکته!</p>
+<p>تاکنون دریافتیم صرفا علامت کواریانس مهم است.
+علامت مثبت بیان میکند این دو متغییر تاثیر وابستگی دارند و الگو تغییرشان یکسان است.
+علامت منفی بیان می دارد که وابستگی دارند اما کاملا معکوس یکدیگر تغییر میکنند.
+و واریانس صفر بیانگر عدم وابستگی است و دو متغییر مستقل هستند.</p>
+</div>
+<section id="id6">
+<h3>خواص<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[Cov(X,X)=Var(X)\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[Cov(X,Y)=Cov(Y,X)\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[Cov(aX+b,Y)=aCov(X,Y)\]</div>
+</li>
+</ul>
+<p>خاصیت آخر نکته جالبی را بیان می کند.
+مثلا فرض کنید تاثیر اندازه دور کمر را بر فشار خون بررسی میکنید. حال اگر سایز دور کمر به متر گزارش شود یا به سانتی متر بر کواریانس تاثیر می گذارد.
+این موضوع برای ما جالب نیست و دوستداریم فارغ از واحد دو متغیر وابستگی شان بررسی شود.
+پس از تکنیک استاندارد کردن استفاده میکنیم</p>
+<div class="warning admonition">
+<p class="admonition-title">احتیاط!</p>
+<p>توجه کنید که در کواریانس صرفا علامت برای ما اهمیت دارد!</p>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2>همبستگی<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>حال بیاید متغیر ها را استاندارد کنیم
+$<span class="math notranslate nohighlight">\(x' = \frac{X-E(X)}{ \sigma_{x} } ,y' = \frac{Y-E(Y)}{ \sigma_{y} }\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( \longrightarrow Cox(X',Y')=\frac{Cov(X,Y)}{ \sigma_{x}\sigma_{y} }\)</span>$
+که به نتیجه بالا ضریب همبستگی پیرسون یا ضریب همبستگی می گوییم.
+به نوعی در استاندارد کردن صورت و مخرج را هم واحد کردیم و از تغییر نتیجه با تغییر واحد جلوگیری کردیم.</p>
+<div class="note admonition">
+<p class="admonition-title">نکته!</p>
+<p>همبستگی همواره عددی بین مثبت یک و منفی یک می باشد هر چقدر دو عدد وابستگی داشته باشند که با رشد یکی دیگری نیز رشد کند به مثبت یک نزدیک می شوند و هر چقدر وابستگی داشته باشند که با رشد یکی دیگری کاهش میابدبه منفی یک نزدیک می شود. و در حالت کلی اگر به مثبت یک یا منفی یک نزدیک شویم رابطه دو متغییر به رابطه خطی نزدیک تر می شودو
+اگر صفر باشد یعنی دو متغیر از یکدیگر مستقل اند.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">نکته!</p>
+<div class="math notranslate nohighlight">
+\[Cor(X,X)=1\]</div>
+<div class="math notranslate nohighlight">
+\[Cor(X,-X)=-1\]</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">احتیاط!</p>
+<p>توجه کنید لزوما هر زمان که همبستگی یک شد بدین معنا نیست که دو متغییر یکسان هستند، برای مثال:
+$<span class="math notranslate nohighlight">\(Cor(X+8,X)=1\)</span>$</p>
+</div>
+</section>
+<section id="id8">
+<h2>منابع<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://maktabkhooneh.org/course/%D8%A2%D9%85%D8%A7%D8%B1-%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84-%D9%85%D9%87%D9%86%D8%AF%D8%B3%DB%8C-mk627/%D9%81%D8%B5%D9%84-%D8%A7%D9%88%D9%84-%D8%A2%D9%85%D8%A7%D8%B1-%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84-%D9%85%D9%87%D9%86%D8%AF%D8%B3%DB%8C-ch1733/%D9%88%DB%8C%D8%AF%DB%8C%D9%88-%DA%A9%D9%88%D9%88%D8%A7%D8%B1%DB%8C%D8%A7%D9%86%D8%B3-%D9%87%D9%85%D8%A8%D8%B3%D8%AA%DA%AF%DB%8C/">مکتب خونه</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Variance">https://en.wikipedia.org/wiki/Variance</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="expectation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">امید ریاضی</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="joint_distribution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">توزیع مشترک</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">واریانس</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">خواص</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">انحراف معیار</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">کواریانس</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">خواص</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">همبستگی</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">منابع</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By گروه دستیاران آموزشی
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
