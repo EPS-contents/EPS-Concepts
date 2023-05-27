@@ -7,6 +7,7 @@ parts:
   - caption: متغیر های تصادفی
     chapters:
     - file: contents/random_var_basics
+    - file: contents/joint_distribution
     - file: contents/moments
   - caption: 
     chapters:
